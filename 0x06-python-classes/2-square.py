@@ -1,4 +1,6 @@
-ass Square defines a square by: 1-square.py
+#!/usr/bin/python3
+"""
+class Square defines a square by: 1-square.py
 """
 
 
