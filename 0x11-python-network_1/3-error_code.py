@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 """
-GET request and printing error code if it exist
+Python script that takes in a URL, sends a request and displays
+the value of the X-Request-Id variable found in the header
+(handling HTTP errors)
 """
-import urllib.request
+from urllib import request, error
 import sys
 
 
 if __name__ == "__main__":
     try:
-        with urllib.request.urlopen(sys.argv[1]) as resp:
-            if resp is not None:
-                html = resp.read()
-                print(html.decode('utf-8'))
-    except urllib.error.HTTPError as fail:
-        print('Error code: {}'.format(fail.code))
+        with request.urlopen(sys.argv[1]) as response:
+            body = response.read()
+            print(body.decode('utf-8'))
+    except error.HTTPError as err:
+        print('Error code: {}'.format(err.code))
